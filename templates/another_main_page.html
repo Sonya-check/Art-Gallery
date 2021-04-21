@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for user in users %}
+    {% if user.photos|length > 0 %}
+
+        <a style="font-family: Comic Sans MS, Verdana, cursive; font-size: 25px" href="/profile/{{user.id}}">Работы пользователя {{ user.name }}</a>
+        <div class="row" style="padding:0px 20px 5px 20px">
+        {% for photo in user.photos %}
+            {% if loop.index <= 3 %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename=photo.path) }} " class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" align="center">{{ photo.name }}</h5>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+{% endfor %}
+{% endblock %}

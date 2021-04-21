@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if photos|length > 0 %}
+
+<div class="row" style="padding-left:10%">
+    {% for photo in photos %}
+        <div class="col-sm-5">
+            <div class="card" style="margin:40px">
+                <img style="border:10px BurlyWood ridge" src="{{ url_for('static', filename=photo.path) }} " class="card-img-top">
+                <div class="card-body" style="height:50px; padding:13px">
+                    <h5 class="card-title" align="center">{{ photo.name }}</h5>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}
